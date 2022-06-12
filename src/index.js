@@ -56,97 +56,99 @@ function generateMarkdown(data) {
    `;
 }
 
-const questions = [
-  {
-    type: "input",
-    name: "title",
-    message: "Please enter the title of your project",
-    validate: async (answer) => {
-      if (!answer) {
-        return "Please enter a valid title";
-      }
-      return true;
+const promptUser = () => {
+  return inquirer.prompt([
+    {
+      type: "input",
+      name: "title",
+      message: "Please enter the title of your project",
+      validate: async (answer) => {
+        if (!answer) {
+          return "Please enter a valid title";
+        }
+        return true;
+      },
     },
-  },
-  {
-    type: "input",
-    name: "description",
-    message: "Please enter a short description of your project",
-    validate: async (answer) => {
-      if (!answer) {
-        return "Please enter a description";
-      }
-      return true;
+    {
+      type: "input",
+      name: "description",
+      message: "Please enter a short description of your project",
+      validate: async (answer) => {
+        if (!answer) {
+          return "Please enter a description";
+        }
+        return true;
+      },
     },
-  },
-  {
-    type: "input",
-    name: "installation",
-    message:
-      "Please give instructions on how to install the application, if any",
-  },
-  {
-    type: "input",
-    name: "usage",
-    message: "Please give instructions on how to use the application",
-  },
-  {
-    type: "checkbox",
-    name: "license",
-    message: "Please select a license for your project",
-    choices: [
-      "Apache",
-      "MIT",
-      "GNU:General Public License",
-      "BSD 2-Clause",
-      "BSD 3-Clause",
-    ],
-    validate: async (answer) => {
-      if (answer.length < 1) {
-        return "Please select a valid license";
-      }
-      return true;
+    {
+      type: "input",
+      name: "installation",
+      message:
+        "Please give instructions on how to install the application, if any",
     },
-  },
-  {
-    type: "input",
-    name: "contribute",
-    message:
-      "Please give details on how to contribute to the project or type none",
-  },
-  {
-    type: "input",
-    name: "test",
-    message: "Please give details on how to test the project or type none",
-  },
-  {
-    type: "input",
-    name: "email",
-    message: "Please enter you e-mail address",
-    validate: async (answer) => {
-      if (!answer) {
-        return "Please enter a valid email address";
-      }
-      return true;
+    {
+      type: "input",
+      name: "usage",
+      message: "Please give instructions on how to use the application",
     },
-  },
-  {
-    type: "input",
-    name: "github",
-    message: "Please enter your GitHub username",
-    validate: async (answer) => {
-      if (!answer) {
-        return "Please enter a valid username";
-      }
-      return true;
+    {
+      type: "checkbox",
+      name: "license",
+      message: "Please select a license for your project",
+      choices: [
+        "Apache",
+        "MIT",
+        "GNU:General Public License",
+        "BSD 2-Clause",
+        "BSD 3-Clause",
+      ],
+      validate: async (answer) => {
+        if (answer.length < 1) {
+          return "Please select a valid license";
+        }
+        return true;
+      },
     },
-  },
-];
+    {
+      type: "input",
+      name: "contribute",
+      message:
+        "Please give details on how to contribute to the project or type none",
+    },
+    {
+      type: "input",
+      name: "test",
+      message: "Please give details on how to test the project or type none",
+    },
+    {
+      type: "input",
+      name: "email",
+      message: "Please enter you e-mail address",
+      validate: async (answer) => {
+        if (!answer) {
+          return "Please enter a valid email address";
+        }
+        return true;
+      },
+    },
+    {
+      type: "input",
+      name: "github",
+      message: "Please enter your GitHub username",
+      validate: async (answer) => {
+        if (!answer) {
+          return "Please enter a valid username";
+        }
+        return true;
+      },
+    },
+  ]);
+};
 
 const init = () => {
   promptUser()
-    .then((answers) =>
-      fs.writeFileSync("renderedreadme.md", generateMarkdown(answers))
+    .then((answer) =>
+      fs.writeFileSync("renderedreadme.md", generateMarkdown(answer))
     )
     .then(() => console.log("Successfully created readme"))
     .catch((err) => console.error(err));
