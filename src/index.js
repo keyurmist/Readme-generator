@@ -121,3 +121,14 @@ const promptUser = () => {
     },
   ]);
 };
+
+const init = () => {
+  promptUser()
+    .then((answers) =>
+      fs.writeFileSync("renderedreadme.md", generateMarkdown(answers))
+    )
+    .then(() => console.log("Successfully created readme"))
+    .catch((err) => console.error(err));
+};
+
+init();
