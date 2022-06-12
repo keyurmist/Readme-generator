@@ -12,7 +12,7 @@ const generateMarkdown = ({
   email,
   github,
 }) =>
-  `#${title}
+  `#${title}![License](https://img.shields.io/badge/${license}-License-orange)
 
 ## Table of Contents
 - [Description](#Description)
