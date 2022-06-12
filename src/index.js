@@ -17,7 +17,7 @@ const generateMarkdown = ({
    ## Table of Contents
    - [Description](#Description)
    - [Installation](#Installation)
-   - [Getting Started](#Getting Started)
+   - [Initialisaton](#Initialisation)
    - [License](#License)
    - [Contributing](#Contributing)
    - [Tests](#Tests)
@@ -35,7 +35,7 @@ const generateMarkdown = ({
    ${installation}
    \`\`\`
 
-   ## Getting Started
+   ## Initialisation
 
    Please follow the instructions below to run the application:
    \`\`\`
@@ -60,7 +60,7 @@ const generateMarkdown = ({
 
    ## Questions
 
-   You can e-mail me at:${email}
+   You can e-mail me at: ${email}
 
    Visit my GitHub ![here](https://github.com/${github})
    `;
