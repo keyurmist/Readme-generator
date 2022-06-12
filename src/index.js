@@ -87,7 +87,7 @@ const questions = [
   },
   {
     type: "input",
-    name: "usgae",
+    name: "usage",
     message: "Please give instructions on how to use the application",
   },
   {
@@ -101,26 +101,45 @@ const questions = [
       "BSD 2-Clause",
       "BSD 3-Clause",
     ],
+    validate: async (answer) => {
+      if (answer.length < 1) {
+        return "Please select a valid license";
+      }
+      return true;
+    },
   },
   {
     type: "input",
     name: "contribute",
-    message: "Please give details on how to contribute to the project",
+    message:
+      "Please give details on how to contribute to the project or type none",
   },
   {
     type: "input",
     name: "test",
-    message: "Please give details on how to test the project",
+    message: "Please give details on how to test the project or type none",
   },
   {
     type: "input",
     name: "email",
     message: "Please enter you e-mail address",
+    validate: async (answer) => {
+      if (!answer) {
+        return "Please enter a valid email address";
+      }
+      return true;
+    },
   },
   {
     type: "input",
     name: "github",
     message: "Please enter your GitHub username",
+    validate: async (answer) => {
+      if (!answer) {
+        return "Please enter a valid username";
+      }
+      return true;
+    },
   },
 ];
 
