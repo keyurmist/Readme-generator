@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/keyurmist/Readme-generator/issues"
   },
-  "homepage": "https://github.com/keyurmist/Readme-generator#readme"
+  "homepage": "https://github.com/keyurmist/Readme-generator#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4"
+  }
 }
