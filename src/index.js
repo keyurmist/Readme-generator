@@ -1,18 +1,8 @@
 const inquirer = require("inquirer");
 const fs = require("fs");
 
-const generateMarkdown = ({
-  title,
-  description,
-  installation,
-  usage,
-  license,
-  contribute,
-  test,
-  email,
-  github,
-}) =>
-  `# ${title} ![License](https://img.shields.io/badge/${license}-License-orange)
+function generateMarkdown(data) {
+  `# ${data.title} ![License](https://img.shields.io/badge/${data.license}-License-orange)
 
    ## Table of Contents
    - [Description](#Description)
@@ -25,45 +15,46 @@ const generateMarkdown = ({
 
    ## Description
 
-   ${description}
+   ${data.description}
 
    ## Installation
 
    Please follow the instructions on how to install the application:
 
    \`\`\`
-   ${installation}
+   ${data.installation}
    \`\`\`
 
    ## Getting Started
 
    Please follow the instructions below to run the application:
    \`\`\`
-   ${usage}
+   ${data.usage}
    \`\`\`
 
    ## License
 
-   This Project is licensed under ${license} ![license](https://img.shields.io/badge/${license}-License-orange)
+   This Project is licensed under ${data.license} ![license](https://img.shields.io/badge/${data.license}-License-orange)
 
    ## Contributing
 
    Ways to contribute to the project include:
 
-   ${contribute}
+   ${data.contribute}
 
    ## Tests
 
    Follow the instructions below:
 
-   ${test}
+   ${data.test}
 
    ## Questions
 
-   You can e-mail me at:${email}
+   You can e-mail me at:${data.email}
 
-   Visit my GitHub ![here](https://github.com/${github})
+   Visit my GitHub ![here](https://github.com/${data.github})
    `;
+}
 
 const promptUser = () => {
   return inquirer.prompt([
